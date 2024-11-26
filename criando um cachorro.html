@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desenho de um cachorro utilizando API do Canvas</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+        canvas {
+            border: 2px solid black;
+            margin: 20px auto;
+            display: block;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="idCanvas" width="600" height="400"></canvas>
+
+    <!--Local dos Botões-->
+    <button onclick="desenharCachorro(); return false;">Desenhar Cachorro</button>
+    <button onclick="apagar(); return false;">Apagar cachorro</button>
+
+    <script>
+        // Criando os comandos necessários para a criação do Canvas, incluindo o nome da variável, que será o principal e o mais utilizado comando aqui.
+        const canvas = document.getElementById("idCanvas");
+        const canvas2d = canvas.getContext("2d");
+
+        // Criação de um cachorro. Aqui, estará passo a passo para a criação do meu animal.
+
+        // Criação da function principal, que irá perpassar todos os membros do cachorro
+        function desenharCachorro() {
+
+            // Cabeça
+            canvas2d.fillStyle = "brown";
+            canvas2d.beginPath();
+            canvas2d.arc(150, 200, 50, 0, 2 * Math.PI); 
+            canvas2d.fill();
+
+            // Olhos
+            canvas2d.fillStyle = "white";
+            canvas2d.beginPath();
+            canvas2d.arc(135, 185, 10, 0, 2 * Math.PI); 
+
+            // Olho esquerdo
+            canvas2d.fill();
+            canvas2d.beginPath();
+            canvas2d.arc(165, 185, 10, 0, 2 * Math.PI); 
+
+            // Olho direito
+            canvas2d.fill();
+
+            // Pupilas
+            canvas2d.fillStyle = "black";
+            canvas2d.beginPath();
+            canvas2d.arc(135, 185, 5, 0, 2 * Math.PI); 
+
+            // Pupila esquerda
+            canvas2d.fill();
+            canvas2d.beginPath();
+            canvas2d.arc(165, 185, 5, 0, 2 * Math.PI); 
+
+            // Pupila direita
+            canvas2d.fill();
+
+            // Focinho
+            canvas2d.fillStyle = "black";
+            canvas2d.beginPath();
+            canvas2d.arc(150, 210, 10, 0, Math.PI); 
+
+            // Focinho
+            canvas2d.fill();
+            canvas2d.fillRect(145, 210, 10, 10); 
+
+            // Orelhas
+            canvas2d.fillStyle = "brown";
+            canvas2d.beginPath();
+            canvas2d.arc(110, 160, 20, 0, Math.PI * 2); 
+
+            // Orelha esquerda
+            canvas2d.fill();
+            canvas2d.beginPath();
+            canvas2d.arc(190, 160, 20, 0, Math.PI * 2); 
+
+            // Orelha direita
+            canvas2d.fill();
+
+            // Corpo ao lado da cabeça, para dar uma visão horizontal do cachorro
+            canvas2d.fillStyle = "brown";
+            canvas2d.beginPath();
+            canvas2d.rect(200, 150, 150, 100);
+            canvas2d.fill();
+
+            // Pernas
+            canvas2d.fillStyle = "brown";
+            canvas2d.beginPath();
+            canvas2d.rect(220, 250, 20, 70); 
+
+            // Perna esquerda
+            canvas2d.fill();
+            canvas2d.beginPath();
+            canvas2d.rect(310, 250, 20, 70); 
+
+            // Perna direita
+            canvas2d.fill();
+
+            // Cauda
+            canvas2d.strokeStyle = "brown";
+            canvas2d.lineWidth = 10;
+            canvas2d.beginPath();
+            canvas2d.moveTo(350, 200);
+            canvas2d.lineTo(400, 290); 
+            canvas2d.stroke();
+        }
+
+        // Função para apagar o cachorro, caso o usuário queira
+        function apagar() {
+            canvas2d.clearRect(0, 0, 600, 400);
+        }
+    </script>
+</body>
+</html>
